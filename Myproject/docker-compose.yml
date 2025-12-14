@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   mysql:
     image: mysql:8.4
@@ -13,5 +15,8 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  # (เราจะเพิ่ม service ของ spring ด้านล่างเมื่อพร้อม)
+
 volumes:
   mysql_data:
+
