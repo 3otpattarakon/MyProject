@@ -17,6 +17,21 @@ services:
 
   # (เราจะเพิ่ม service ของ spring ด้านล่างเมื่อพร้อม)
 
+  app:
+    build:
+      context: ./devrobot
+      dockerfile: Dockerfile
+    container_name: devrobot_app
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/demo_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+      SPRING_DATASOURCE_USERNAME: "demo_user"
+      SPRING_DATASOURCE_PASSWORD: "demo_pass"
+    ports:
+      - "8080:8080"
+
 volumes:
   mysql_data:
 
